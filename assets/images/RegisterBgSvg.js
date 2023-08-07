@@ -7,7 +7,7 @@ function RegisterSvgComponent(props) {
       xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       width={200}
-      height={180}
+      height={120}
       viewBox="0 0 655.27173 556.25"
       {...props}
     >

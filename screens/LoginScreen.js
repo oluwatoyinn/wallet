@@ -2,7 +2,7 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import { themeColors } from "../theme";
-import { ArrowLeftIcon } from "react-native-heroicons/solid";
+import { ArrowLongLeftIcon} from "react-native-heroicons/solid";
 import { useNavigation } from "@react-navigation/native";
 import EnterSvgComponent from "./../assets/images/EnterLoginSvg";
 
@@ -17,9 +17,9 @@ const LoginScreen = () => {
         <View className="flex-row justify-start">
           <TouchableOpacity
             onPress={() => navigation.goBack()}
-            className="bg-white p-2 rounded-tr-2xl rounded-bl-2xl ml-4"
+            className="p-1 ml-4"
           >
-            <ArrowLeftIcon size="20" color="black" />
+            <ArrowLongLeftIcon size="20" color="white" />
           </TouchableOpacity>
         </View>
         <View className="flex-row justify-center">
