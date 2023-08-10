@@ -23,7 +23,16 @@ const themeColors = {
   primary: "#00325B",
   secondary: "#006399",
   gray: "#494d80",
+  lightGray: "#D3D3D3",
   white: "#fff",
+  yellow: "#FFFF00",
+  lightYellow: "#FFAC33",
+  red: "#FF0000",
+  lightRed: "#FF3333",
+  purple: "#800080",
+  lightPurple: "#9C51B6",
+  green: "#008000",
+  lightGreen: "#00C957",
 };
 
 const screenHeaderBtnStyles = StyleSheet.create({
