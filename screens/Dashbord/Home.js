@@ -77,7 +77,119 @@ const Home = () => {
   const [dataFeatures, setDataFeatures] = useState(data);
   const [promos, setPromos] = useState(specialPromo);
 
+  const renderHeader = () => {
+    return (
+      <View style={{ flexDirection: "row", marginVertical: SIZES.padding * 2 }}>
+        <View style={{ flex: 1 }}>
+          <Text className="font-extrabold text-2xl"> Hello!</Text>
+          <Text className="text-gray-400 font-medium"> Victor Ajayi</Text>
+        </View>
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <TouchableOpacity
+            style={{
+              height: 40,
+              width: 40,
+              justifyContent: "center",
+              alignItems: "center",
+              // backgroundColor: themeColors.lightGray,
+            }}
+          >
+            <Ionicons name="notifications" size={24} />
+            <View
+              style={{
+                position: "absolute",
+                top: -5,
+                right: -5,
+                height: 10,
+                width: 10,
+                backgroundColor: themeColors.red,
+                borderRadius: 5,
+              }}
+            ></View>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  };
+
+  const renderHeaderBanner = () => {
+    return (
+      <View
+        style={{
+          height: 140,
+          borderRadius: 20,
+          backgroundColor: themeColors.secondary,
+          padding: SIZES.padding,
+        }}
+      >
+        <Text className="text-white text-lg font-bold">Hello</Text>
+      </View>
+    );
+  };
+
+  const renderFeatures = () => {
+    const Header = () => (
+      <View style={{ marginBottom: SIZES.padding * 2 }}>
+        <Text className="font-extrabold text-2xl"> Features</Text>
+      </View>
+    );
+
+    const renderItem = ({ item }) => (
+      <TouchableOpacity
+        style={{
+          marginBottom: SIZES.padding * 2,
+          width: 60,
+          alignItems: "center",
+        }}
+        onPress={() => console.log(item.description)}
+      >
+        <View
+          style={{
+            height: 50,
+            width: 50,
+            marginBottom: 5,
+            borderRadius: 20,
+            backgroundColor: item.backgroundColor,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {item.icon}
+        </View>
+        <Text className="text-center flex-wrap"> {item.description} </Text>
+      </TouchableOpacity>
+    );
+    return (
+      <FlatList
+        ListHeaderComponent={Header}
+        data={dataFeatures}
+        numColumns={4}
+        columnWrapperStyle={{ justifyContent: "space-between" }}
+        keyExtractor={(item) => `${item.id}`}
+        renderItem={renderItem}
+        style={{ marginTop: SIZES.padding * 2 }}
+      />
+    );
+  };
+
+  const renderPromosHeader = () => (
+    <View style={{ flexDirection: "row", marginBottom: SIZES.padding }}>
+      <View style={{ flex: 1 }}>
+        <Text className="font-extrabold text-2xl">Special Promo</Text>
+      </View>
+    </View>
+  );
+
   const renderingPromos = () => {
+    const HeaderComponent = () => (
+      <View>
+        {renderHeader()}
+        {renderHeaderBanner()}
+        {renderFeatures()}
+        {renderPromosHeader()}
+      </View>
+    );
+
     const renderItem = ({ item }) => (
       <TouchableOpacity
         style={{
@@ -95,7 +207,7 @@ const Home = () => {
           }}
         >
           <Image
-            source={images.target}
+            source={item.img}
             resizeMode="cover"
             style={{
               width: "100%",
@@ -121,13 +233,15 @@ const Home = () => {
 
     return (
       <FlatList
+        ListHeaderComponent={HeaderComponent}
         contentContainerStyle={{ paddingHorizontal: SIZES.padding * 3 }}
         numColumns={2}
         columnWrapperStyle={{ justifyContent: "space-between" }}
-        data={specialPromo}
+        data={promos}
         keyExtractor={(item) => `${item.id}`}
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
+        ListFooterComponent={<View style={{ marginBottom: 80 }}></View>}
       />
     );
   };

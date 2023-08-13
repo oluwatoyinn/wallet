@@ -30,7 +30,7 @@ const themeColors = {
   red: "#FF0000",
   lightRed: "#FF3333",
   purple: "#800080",
-  lightPurple: "#9C51B6",
+  lightPurple: "#9B59B6",
   green: "#008000",
   lightGreen: "#00C957",
 };
